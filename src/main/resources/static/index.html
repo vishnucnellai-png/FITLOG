@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FitLog | Personal Workout &amp; Calorie Tracker</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar">
+      <div class="brand"><span class="brand-mark">F</span><span>FitLog</span></div>
+      <nav class="navigation" aria-label="Main navigation">
+        <button class="nav-link active" data-section="dashboard">Dashboard</button>
+        <button class="nav-link" data-section="users">Users</button>
+        <button class="nav-link" data-section="workouts">Workouts</button>
+        <button class="nav-link" data-section="meals">Meals</button>
+        <button class="nav-link" data-section="goals">Goals</button>
+        <button class="nav-link" data-section="summary">Summary</button>
+      </nav>
+      <p class="sidebar-note">Personal Workout &amp; Calorie Tracker</p>
+    </aside>
+    <main class="main-content">
+      <div id="message" class="message" role="status"></div>
+
+      <section id="dashboard" class="page-section active">
+        <div class="page-heading"><div><p class="eyebrow">Dashboard</p><h1>Good to see you</h1><p>Track your activity, nutrition and weekly progress.</p></div></div>
+        <div class="filters"><label>User<select id="dashboard-user"></select></label><label>Date<input id="dashboard-date" type="date"></label><button id="refresh-dashboard" class="button primary">Refresh</button></div>
+        <div class="summary-grid">
+          <article class="summary-card"><span>Calories Consumed</span><strong id="card-consumed">-</strong></article>
+          <article class="summary-card"><span>Calories Burned</span><strong id="card-burned">-</strong></article>
+          <article class="summary-card"><span>Net Calories</span><strong id="card-net">-</strong></article>
+          <article class="summary-card"><span>Workouts Completed</span><strong id="card-workouts">-</strong></article>
+          <article class="summary-card"><span>Weekly Goal</span><strong id="card-goal">-</strong></article>
+        </div>
+      </section>
+
+      <section id="users" class="page-section">
+        <div class="page-heading"><div><p class="eyebrow">People</p><h1>Users</h1></div></div>
+        <div class="content-grid"><form id="user-form" class="panel form-panel"><h2>Add user</h2><input type="hidden" name="id"><label>Name<input name="name" required></label><label>Email<input name="email" type="email" required></label><div class="form-actions"><button class="button primary" type="submit">Add User</button><button class="button ghost cancel-edit" type="button">Cancel</button></div></form><div class="panel table-panel"><div class="table-wrap"><table><thead><tr><th>Name</th><th>Email</th><th>Actions</th></tr></thead><tbody id="users-table"></tbody></table></div></div></div>
+      </section>
+
+      <section id="workouts" class="page-section">
+        <div class="page-heading"><div><p class="eyebrow">Activity</p><h1>Workouts</h1></div></div>
+        <div class="content-grid"><form id="workout-form" class="panel form-panel"><h2>Add workout</h2><input type="hidden" name="id"><label>Workout Type<input name="type" required></label><label>Duration (minutes)<input name="duration" type="number" min="1" required></label><label>Calories Burned<input name="caloriesBurned" type="number" min="0" required></label><label>Date<input name="date" type="date" required></label><label>User<select name="userId" class="user-select" required></select></label><div class="form-actions"><button class="button primary" type="submit">Add Workout</button><button class="button ghost cancel-edit" type="button">Cancel</button></div></form><div class="panel table-panel"><div class="table-wrap"><table><thead><tr><th>Type</th><th>Duration</th><th>Burned</th><th>Date</th><th>Actions</th></tr></thead><tbody id="workouts-table"></tbody></table></div></div></div>
+      </section>
+
+      <section id="meals" class="page-section">
+        <div class="page-heading"><div><p class="eyebrow">Nutrition</p><h1>Meals</h1></div></div>
+        <div class="content-grid"><form id="meal-form" class="panel form-panel"><h2>Add meal</h2><input type="hidden" name="id"><label>Food Item<input name="foodItem" required></label><label>Quantity<input name="quantity" type="number" min="1" required></label><label>Calories<input name="calories" type="number" min="0" required></label><label>Date<input name="date" type="date" required></label><label>User<select name="userId" class="user-select" required></select></label><div class="form-actions"><button class="button primary" type="submit">Add Meal</button><button class="button ghost cancel-edit" type="button">Cancel</button></div></form><div class="panel table-panel"><div class="table-wrap"><table><thead><tr><th>Food</th><th>Quantity</th><th>Calories</th><th>Date</th><th>Actions</th></tr></thead><tbody id="meals-table"></tbody></table></div></div></div>
+      </section>
+
+      <section id="goals" class="page-section">
+        <div class="page-heading"><div><p class="eyebrow">Progress</p><h1>Goals</h1></div></div>
+        <div class="content-grid"><form id="goal-form" class="panel form-panel"><h2>Add goal</h2><input type="hidden" name="id"><label>User<select name="userId" class="user-select" required></select></label><label>Weekly Workout Target<input name="weeklyWorkoutTarget" type="number" min="1" required></label><div class="form-actions"><button class="button primary" type="submit">Add Goal</button><button class="button ghost cancel-edit" type="button">Cancel</button></div></form><div class="panel table-panel"><div class="table-wrap"><table><thead><tr><th>Weekly Target</th><th>Actions</th></tr></thead><tbody id="goals-table"></tbody></table></div></div></div>
+      </section>
+
+      <section id="summary" class="page-section">
+        <div class="page-heading"><div><p class="eyebrow">Insights</p><h1>Summary</h1></div></div>
+        <div class="filters"><label>User<select id="summary-user"></select></label><label>Date<input id="summary-date" type="date"></label><button id="daily-summary-button" class="button primary">Daily Summary</button><button id="weekly-summary-button" class="button secondary">Weekly Summary</button></div>
+        <div id="summary-result" class="summary-result empty">Select a user and date to view a summary.</div>
+      </section>
+    </main>
+  </div>
+  <script src="js/app.js"></script>
+</body>
+</html>
